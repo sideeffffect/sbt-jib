@@ -35,7 +35,7 @@ private[jib] object SbtJavaDockerBuild {
       val taggedImage =
         additionalTags.foldRight(Containerizer.to(targetImage))((tag, image) => image.withAdditionalTag(tag))
 
-      val sbtJavaCommon = new SbtJavaCommon(logger)
+      val sbtJavaCommon = new JibCommon(logger)
       val builder = sbtJavaCommon
         .prepareJavaContainerBuilder(
           JavaContainerBuilder.from(configuration.baseImageFactory(jibBaseImageCredentialHelper)),
